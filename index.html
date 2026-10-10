@@ -1,0 +1,70 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مكتبة أوامر المدير</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@600;800&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<style>
+:root{--navy:#14213D;--teal:#0F7C73;--amber:#E09F3E;--bg:#F1ECE2;--card:#FFFDF8;--ink:#1B1F2A;--muted:#5A6270;--line:#E2DACB;--tint:#E3F1EE;--warn:#F6E4E1;--warnInk:#7A2A21;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1726;--card:#18233A;--ink:#EEF0F4;--muted:#AEB6C4;--line:#2B3852;--tint:#12383A;--warn:#3B2023;--warnInk:#F2B8B0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1726;--card:#18233A;--ink:#EEF0F4;--muted:#AEB6C4;--line:#2B3852;--tint:#12383A;--warn:#3B2023;--warnInk:#F2B8B0;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;line-height:1.7;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 48px}
+header{background:#14213D;color:#F7F4EE;border-radius:0 0 24px 24px;padding:30px 22px 26px;margin:0 -14px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;left:-50px;bottom:-70px;width:200px;height:200px;border-radius:50%;border:22px solid #0F7C73;opacity:.5}
+.tag{display:inline-block;background:#E09F3E;color:#14213D;font-weight:600;font-size:13px;padding:3px 14px;border-radius:99px}
+h1{font-family:'Noto Kufi Arabic',Tahoma,sans-serif;font-weight:800;font-size:clamp(26px,7vw,36px);margin:12px 0 4px;position:relative;z-index:1}
+header p{margin:0;color:#CBD3DF;position:relative;z-index:1}
+.how{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:16px 0 4px;display:flex;gap:10px;flex-wrap:wrap}
+.how span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.how b{width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:13px;flex:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:14px}
+.top{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;width:44px;height:44px;border-radius:14px;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:'Noto Kufi Arabic',Tahoma,sans-serif;font-weight:800;font-size:20px}
+h2{font-family:'Noto Kufi Arabic',Tahoma,sans-serif;font-weight:800;font-size:19px;margin:0;line-height:1.5}
+.when{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.warn{margin-top:12px;background:var(--warn);color:var(--warnInk);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:600}
+.ex{margin-top:12px;background:var(--tint);border-radius:12px;padding:10px 14px;font-size:14px}
+.btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn{flex:1 1 150px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:14px;font:600 15px 'IBM Plex Sans Arabic',Tahoma,sans-serif;text-decoration:none;cursor:pointer;border:0}
+.open{background:#14213D;color:#F7F4EE}
+.copy{background:var(--tint);color:var(--ink);border:1px solid var(--line)}
+.copy.ok{background:#0F7C73;color:#fff}
+details{margin-top:12px}
+summary{cursor:pointer;color:var(--teal);font-weight:600;font-size:14.5px}
+pre{white-space:pre-wrap;font:15px/1.8 'IBM Plex Sans Arabic',Tahoma,sans-serif;background:var(--bg);border-radius:12px;padding:12px 14px;margin:10px 0 0}
+.gold{border:2px solid #E09F3E}
+.gold .num{background:#E09F3E;color:#14213D}
+.note{margin-top:22px;color:var(--muted);font-size:13.5px;text-align:center}
+.btn:focus-visible,summary:focus-visible{outline:3px solid #E09F3E;outline-offset:2px}
+</style></head><body><div class="wrap">
+<header><span class="tag">برنامج الإدارة المهنية</span><h1>مكتبة أوامر المدير</h1><p>تسعة أوامر جاهزة: اختر، افتح في ChatGPT، وأجب عن أسئلته</p></header>
+<div class="how"><span><b>1</b>اختر الأداة</span><span><b>2</b>اضغط «افتح في ChatGPT»</span><span><b>3</b>أجب عن سؤاله الأول</span></div>
+<div id="list"></div>
+<p class="note">الذكاء الاصطناعي يكتب المسودة، والإنسان يراجع ويقرر. لا تُدخل معلومات سرية أو شخصية.</p>
+</div>
+<script>
+const P=[{"t": "غرفة العمليات الإدارية الذكية", "w": "حين يصلك توجيه مختصر أو غامض، وتريد تحويله إلى خطة تنفيذ ومتابعة وكتاب تكليف", "warn": null, "x": "تصرف كمستشار تنفيذي متخصص في إدارة العمليات المؤسسية.\nسأقدم لك توجيهاً إدارياً قد يكون مختصراً أو غير واضح. مهمتك تحويله إلى خطة عمل جاهزة للتنفيذ والمتابعة.\nنفذ المراحل التالية:\n1. استخرج الهدف الحقيقي من التوجيه.\n2. حدد الإجراءات المطلوبة بدقة.\n3. اقترح القسم المسؤول عن كل إجراء بحسب وظيفته.\n4. حدد الجهات التي يجب التنسيق معها.\n5. حدد أولويات التنفيذ والاعتماديات.\n6. اقترح مؤشرات قابلة للقياس للتحقق من الإنجاز.\n7. اكتشف المخاطر ونقاط التعطيل.\n8. أنشئ جدول متابعة بالأعمدة: المهمة | المسؤول | الأولوية | الموعد | المخرج | حالة التنفيذ.\n9. اكتب مسودة كتاب رسمي لتكليف الجهات المعنية.\n10. أنشئ ملخصاً تنفيذياً يمكن عرضه على المدير خلال دقيقة واحدة.\nاستخدم أسلوباً إدارياً واضحاً مستوحى من ASD-STE100، مع أفعال مباشرة وجمل قصيرة.\nلا تخترع أسماء أو أرقاماً أو تواريخ، واكتب [يحتاج تأكيد] عند غياب أي معلومة.\nابدأ بسؤالي عن التوجيه الإداري، وانتظر إجابتي قبل أن تبدأ.", "ex": "«يرجى اتخاذ ما يلزم لتهيئة موقع الفعالية والتنسيق مع الجهات ذات العلاقة وإعلامنا بالإجراءات المتخذة»"}, {"t": "مجلس المستشارين الافتراضي", "w": "قبل قرار مهم، حين تريد أن ترى القرار من خمس زوايا مختلفة", "warn": null, "x": "أريد منك محاكاة اجتماع لجنة استشارية افتراضية لدراسة قرار إداري.\nتتكون اللجنة من خمسة أدوار: مستشار استراتيجي، خبير مالي، خبير موارد بشرية، خبير إدارة المخاطر، خبير التحول الرقمي.\nالمطلوب:\n1. يقدم كل عضو تحليله من زاوية اختصاصه.\n2. يحدد كل عضو فرصة مهمة ومخاطرة محتملة.\n3. اعرض ثلاث نقاط خلاف جوهرية بين أعضاء اللجنة.\n4. اجعل اللجنة تناقش هذه الخلافات وتختبر الافتراضات.\n5. قدم ثلاثة بدائل واقعية للقرار.\n6. أنشئ مصفوفة قرار متعددة المعايير تشمل الكلفة والوقت والمخاطر والأثر.\n7. حدد المعلومات الناقصة التي قد تغير التوصية.\n8. اكتب توصية نهائية مشروطة بالأدلة المتاحة، واذكر الرأي المعارض الأقوى.\nهذه محاكاة تحليلية وليست آراء خبراء حقيقيين. لا تخترع أرقاماً أو نتائج مالية. لا تعطِ جميع الأعضاء الرأي نفسه.\nابدأ بسؤالي عن القرار الذي أريد دراسته وسياقه، وانتظر إجابتي قبل أن تبدأ المحاكاة.", "ex": null}, {"t": "محاكي القرارات: ماذا لو؟", "w": "حين تتردد بين الإبقاء على الوضع أو تغيير محدود أو تغيير شامل", "warn": null, "x": "تصرف كمستشار متخصص في تحليل السيناريوهات واتخاذ القرارات.\nحلل ثلاثة سيناريوهات لقرار إداري:\nأ. الاستمرار بالوضع الحالي.\nب. تنفيذ تغيير محدود.\nج. تنفيذ تغيير شامل.\nلكل سيناريو وضح: الموارد المطلوبة، الكلفة المتوقعة إذا توفرت بيانات كافية، التأثير على الوقت والجودة، المخاطر والفرص، أثر القرار على المستفيدين، مؤشرات النجاح، شروط نجاح السيناريو.\nأنشئ مصفوفة مقارنة، ثم أجرِ تحليل حساسية يوضح كيف تتغير الأفضلية عند تغيير افتراض مهم.\nافصل بين الحقائق والافتراضات والتقديرات.\nلا تخترع أسماء أو أرقاماً أو تواريخ، واكتب [يحتاج تأكيد] عند غياب أي معلومة.\nاختم بتوصية واضحة مع أسبابها وشروط صلاحيتها.\nابدأ بسؤالي عن القرار وسياقه، وانتظر إجابتي قبل أن تبدأ التحليل.", "ex": null}, {"t": "كشف أسباب فشل المشروع قبل حدوثه", "w": "قبل إطلاق مشروع: تخيّل فشله لتمنعه. مناسب لمن ينفذ مشاريع متعددة", "warn": null, "x": "تصرف كخبير مستقل في إدارة المشاريع والمخاطر.\nتخيل، لغرض التحليل فقط، أن المشروع فشل بعد ستة أشهر.\nالمطلوب:\n1. حدد عشرة أسباب محتملة للفشل.\n2. صنفها إلى إدارية ومالية وتقنية وبشرية وتشغيلية.\n3. قدر احتمال كل خطر وتأثيره وصفياً.\n4. حدد الإشارات المبكرة التي قد تكشف الخطر.\n5. اقترح إجراءً وقائياً لكل خطر.\n6. اقترح خطة استجابة عند وقوعه.\n7. حدد مالك الخطر بحسب الوظيفة.\n8. أنشئ سجل مخاطر قابلاً للتحديث.\nاختم بخمسة إجراءات وقائية ذات أولوية عالية يمكن للإدارة البدء بها.\nلا تعامل السيناريو الافتراضي كأنه حدث فعلاً.\nابدأ بسؤالي عن تفاصيل المشروع: الهدف، النتيجة المرجوة، أصحاب المصلحة، الاعتماديات، حدود المشروع، والمدة. وانتظر إجابتي قبل أن تبدأ.", "ex": null}, {"t": "المستشار الذي يعارض المدير", "w": "حين تريد نقداً صادقاً لقرارك، لا موافقة عليه", "warn": null, "x": "تصرف كمستشار إداري مستقل مهمته تحسين جودة قراراتي، وليس تأييد آرائي.\nسأعرض عليك قراراً أنوي اتخاذه. أريد منك:\n1. تحديد الافتراضات غير المثبتة.\n2. تقديم أقوى ثلاثة اعتراضات مهنية على القرار.\n3. كشف المعلومات التي قد أكون تجاهلتها.\n4. تحليل العواقب غير المقصودة.\n5. اقتراح بديل أفضل إن وجد.\n6. بيان الظروف التي تجعل قراري الأصلي هو الأفضل.\n7. تحديد ما يجب التحقق منه قبل الاعتماد النهائي.\nاستخدم أسلوباً مهنياً محترماً، لكن لا تجاملني.\nابدأ بسؤالي عن القرار الذي أنوي اتخاذه وسياقه، وانتظر إجابتي.", "ex": null}, {"t": "المدقق الإداري الذي يكشف التعارضات", "w": "حين لديك كتب أو تعليمات أو تقارير متعددة، وتريد كشف التعارض والتكرار بينها", "warn": "ارفع وثائق غير سرية فقط، أو احذف منها المعلومات الحساسة قبل الرفع", "x": "تصرف كمدقق إداري مختص بفحص الاتساق بين الوثائق.\nسأقدم لك كتباً رسمية أو تعليمات أو تقارير متعددة. المطلوب:\n1. استخراج الالتزامات والمتطلبات من كل وثيقة.\n2. اكتشاف أي تعارض في الأرقام أو التواريخ أو الإجراءات.\n3. كشف التعليمات المكررة.\n4. تحديد المتطلبات التي لم يقدم لها دليل تنفيذ.\n5. التمييز بين التعارض الحقيقي والاختلاف الظاهري.\n6. إنشاء جدول: الوثيقة | الملاحظة | النص الداعم | مستوى الخطورة | الإجراء المقترح.\n7. إعداد مذكرة بالملاحظات المهمة للمدير.\nاستند فقط إلى الوثائق المقدمة. استشهد باسم الوثيقة والصفحة أو الفقرة عند توفرها. لا تحكم بمخالفة قانونية دون سند واضح.\nابدأ بأن تطلب مني إرفاق الوثائق، وانتظر حتى أكتب: جاهز.", "ex": null}, {"t": "تحليل شكاوى المستفيدين", "w": "حين تتجمع شكاوى أو ملاحظات، وتريد معرفة المشكلات الحقيقية خلفها", "warn": "احذف الأسماء وأرقام الهواتف وأي بيانات شخصية قبل لصق الشكاوى", "x": "تصرف كمحلل لجودة الخدمات وتجربة المستفيدين.\nسأقدم لك مجموعة شكاوى أو ملاحظات. المطلوب:\n1. تصنيف الشكاوى موضوعياً.\n2. حساب تكرار كل مشكلة، مع توضيح طريقة العد.\n3. تحديد المشكلات الأكثر تأثيراً.\n4. التمييز بين الأعراض والأسباب المحتملة.\n5. اكتشاف المشكلات المتكررة بين الأقسام.\n6. ترتيب أولويات المعالجة بحسب التأثير والتكرار.\n7. اقتراح إجراءات عاجلة وأخرى وقائية.\n8. تصميم مؤشرات لقياس تحسن الخدمة.\n9. إعداد تقرير مختصر للإدارة العليا.\nأخفِ أي بيانات شخصية قد ترد في الشكاوى. لا تنسب مسؤولية أو تقصيراً إلى شخص دون أدلة. لا تصف سبباً بأنه مؤكد إذا كان مجرد فرضية.\nابدأ بأن تطلب مني لصق الشكاوى، وذكّرني بحذف البيانات الشخصية قبل لصقها.", "ex": null}, {"t": "مستشار الأزمات والفعاليات الكبرى", "w": "حين تخطط لفعالية كبيرة أو موسم زيارات، وتريد إطاراً تشغيلياً أولياً", "warn": "معلومات عامة أو افتراضية فقط. لا تُدخل تفاصيل أمنية أو مسارات أو أعداد كوادر حقيقية. الخطة النهائية تعتمدها الجهات المختصة", "x": "تصرف كفريق تخطيط تشغيلي لإدارة فعالية كبيرة.\nتتكون خبرات الفريق من: التشغيل، الخدمات، الأمن والسلامة، تقنية المعلومات، الإعلام، واللوجستيات.\nالمطلوب:\n1. تحديد مراحل العمل قبل الفعالية وأثناءها وبعدها.\n2. إعداد توزيع وظيفي للكوادر.\n3. تحديد الاحتياجات التشغيلية.\n4. تحديد نقاط الازدحام والتعطيل المحتملة.\n5. إنشاء سيناريوهات استجابة لانقطاع الكهرباء أو تعطل النظام أو زيادة أعداد المستفيدين.\n6. تحديد مسار تصعيد واضح للحوادث.\n7. إعداد قائمة فحص للجاهزية.\n8. تصميم نموذج تقرير موقف مختصر للقيادة.\n9. تحديد مؤشرات نجاح الفعالية.\nميّز بين الاحتياجات المؤكدة والمقترحات. لا تخترع أعداد كوادر أو سعات مواقع أو تفاصيل سلامة غير معروفة. بيّن ما يتطلب تقييم المختصين واعتمادهم.\nابدأ بسؤالي عن نوع الفعالية ومعلوماتها العامة المتوفرة. لا تطلب مني تفاصيل أمنية.", "ex": null}]; const G={"t": "البرومبت الذهبي المتقدم", "w": "الصقه في نهاية أي أمر، أو أرسله بعد الإجابة الأولى", "x": "قبل اعتماد إجابتك، راجع المخرجات من خمس زوايا:\n1. الدقة: هل توجد معلومة غير مثبتة؟\n2. الاكتمال: هل أغفلت مهمة أو مسؤولية أو مخاطرة؟\n3. القابلية للتنفيذ: هل كل توصية قابلة للتحويل إلى إجراء؟\n4. الوضوح: هل يستطيع موظف تنفيذ المطلوب دون تفسير إضافي؟\n5. القيمة: هل قدمت تحليلاً حقيقياً بدلاً من كلام عام؟\nصحح المشكلات المكتشفة، ثم قدم النسخة النهائية.\nأضف في النهاية:\n- ما الذي يمكن تنفيذه الآن؟\n- ما الذي يحتاج قراراً إدارياً؟\n- ما الذي يحتاج بيانات أو تحققاً إضافياً؟"};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function copyText(t,btn){
+  const done=()=>{btn.classList.add('ok');btn.textContent='تم النسخ ✓';setTimeout(()=>{btn.classList.remove('ok');btn.textContent='انسخ الأمر'},1800)};
+  const fallback=()=>{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){alert('اضغط مطولاً على النص في «اعرض الأمر كاملاً» لنسخه')}a.remove()};
+  try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+}
+const list=document.getElementById('list');
+P.forEach((p,i)=>{
+  const c=document.createElement('section');c.className='card';c.id='p'+(i+1);
+  c.innerHTML=`<div class="top"><div class="num">${i+1}</div><div><h2>${esc(p.t)}</h2><p class="when">${esc(p.w)}</p></div></div>`+
+   (p.warn?`<div class="warn">⚠ ${esc(p.warn)}</div>`:'')+
+   (p.ex?`<div class="ex"><b>مثال للتجربة:</b> ${esc(p.ex)}</div>`:'')+
+   `<div class="btns"><a class="btn open" target="_blank" rel="noopener" href="https://chatgpt.com/?q=${encodeURIComponent(p.x)}">افتح في ChatGPT</a><button class="btn copy" type="button">انسخ الأمر</button></div>`+
+   `<details><summary>اعرض الأمر كاملاً</summary><pre>${esc(p.x)}</pre></details>`;
+  c.querySelector('.copy').onclick=e=>copyText(p.x,e.currentTarget);
+  list.appendChild(c);
+});
+const g=document.createElement('section');g.className='card gold';g.id='gold';
+g.innerHTML=`<div class="top"><div class="num">★</div><div><h2>${esc(G.t)}</h2><p class="when">${esc(G.w)}</p></div></div><div class="btns"><button class="btn copy" type="button">انسخ الأمر</button></div><details open><summary>الأمر</summary><pre>${esc(G.x)}</pre></details>`;
+g.querySelector('.copy').onclick=e=>copyText(G.x,e.currentTarget);
+list.appendChild(g);
+</script></body></html>
